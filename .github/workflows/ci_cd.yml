@@ -32,10 +32,6 @@ jobs:
         name: Install Dependencies
         run: pip install -e .
 
-      - id: get_version
-        name: Get Version
-        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_ENV
-
       - id: build_package
         name: Build Package
         run: python -m build
@@ -46,9 +42,6 @@ jobs:
         with:
           name: package
           path: dist/*
-
-    outputs:
-      version: ${{ env.VERSION }}
 
   test:
     needs: [build]
@@ -80,9 +73,9 @@ jobs:
       # maybe we can get the version in the build job,
       # and pass it as an output to the release job.
       # this might fix the issue.
-      # - id: get_version
-      #   name: Get Version
-      #   run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
+      - id: get_version
+        name: Get Version
+        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
 
       - id: create_release
         name: Create Release
@@ -93,7 +86,7 @@ jobs:
           draft: ${{ contains(github.event.head_commit.message, '.draft') }}
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
-          tag_name: ${{ needs.build.outputs.version }}
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
 
       - id: upload_to_pypi
         name: Upload to PyPI
