@@ -26,8 +26,7 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          restore-keys: ${{ runner.os }}-pip-
 
       - id: install_dependencies
         name: Install Dependencies
@@ -82,3 +81,10 @@ jobs:
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
           tag_name: ${{ steps.get_version.outputs.VERSION }}
+
+      - id: upload_to_pypi
+        name: Upload to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1.8
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
