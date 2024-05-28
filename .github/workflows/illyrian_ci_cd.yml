@@ -6,10 +6,9 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    name: Test
+  build:
+    runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, '.deploy')
-    runs-on: ubuntu-latest
     steps:
       - id: checkout
         name: Checkout
@@ -20,54 +19,15 @@ jobs:
         uses: actions/setup-python@main
         with:
           python-version: "3.12"
-          cache: "pip"
 
-      - id: install_dependencies
-        name: Install Dependencies
-        run: pip install -e .
-
-      - id: create_build_dir
-        name: Create Build Directory
-        run: mkdir -p dardania/build
-
-      - id: compile_to_shared_library
-        name: Compile to Shared Library
-        run: g++ -shared -fPIC -g dardania/test.cpp -o dardania/build/test.so
-
-      - id: run_tests
-        name: Run Tests
-        run: python -m unittest discover
-
-      - id: test_badge
-        name: Test Badge
-        if: always()
-        uses: schneegans/dynamic-badges-action@master
+      - id: cache_dependencies
+        name: Cache Dependencies
+        uses: actions/cache@v2
         with:
-          auth: ${{ secrets.GIST_ACCESS_TOKEN }}
-          gistID: ${{ secrets.GIST_ID }}
-          filename: test_badge.json
-          label: Unittest
-          message: ${{ job.status }}
-          color: ${{ job.status == 'success' && 'brightgreen' || 'red' }}
-          namedLogo: pytest
-          logoColor: white
-          style: flat-square
-
-  release:
-    name: Release
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@main
-
-      - id: setup_python
-        name: Setup Python
-        uses: actions/setup-python@main
-        with:
-          python-version: "3.12"
-          cache: "pip"
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - id: install_dependencies
         name: Install Dependencies
@@ -76,6 +36,37 @@ jobs:
       - id: build_package
         name: Build Package
         run: python -m build
+
+      - id: upload_package
+        name: Upload Package
+        uses: actions/upload-artifact@v2
+        with:
+          name: package
+          path: dist/*
+
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - id: download_package
+        name: Download Package
+        uses: actions/download-artifact@v2
+        with:
+          name: package
+
+      - id: run_tests
+        name: Run Tests
+        run: python -m unittest discover
+
+  release:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - id: download_package
+        name: Download Package
+        uses: actions/download-artifact@v2
+        with:
+          name: package
 
       - id: get_version
         name: Get Version
@@ -91,67 +82,3 @@ jobs:
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
           tag_name: ${{ steps.get_version.outputs.VERSION }}
-
-      - id: release_badge
-        name: Release Badge
-        if: always()
-        uses: schneegans/dynamic-badges-action@master
-        with:
-          auth: ${{ secrets.GIST_ACCESS_TOKEN }}
-          gistID: ${{ secrets.GIST_ID }}
-          filename: release_badge.json
-          label: Release
-          message: ${{ job.status }}
-          color: ${{ job.status == 'success' && 'brightgreen' || 'red' }}
-          namedLogo: hackthebox
-          logoColor: white
-          style: flat-square
-
-  wiki:
-    name: Wiki
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@main
-
-      - id: setup_python
-        name: Setup Python
-        uses: actions/setup-python@main
-        with:
-          python-version: "3.12"
-          cache: "pip"
-
-      - id: install_dependencies
-        name: Install Dependencies
-        run: pip install -e .
-
-      - id: build_wiki
-        name: Build Wiki
-        run: cd stenwiki && make html
-
-      - id: upload_wiki
-        name: Upload Wiki
-        uses: SamKirkland/FTP-Deploy-Action@master
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: stenwiki/_build/html/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
-
-      - id: wiki_badge
-        name: Wiki Badge
-        if: always()
-        uses: schneegans/dynamic-badges-action@master
-        with:
-          auth: ${{ secrets.GIST_ACCESS_TOKEN }}
-          gistID: ${{ secrets.GIST_ID }}
-          filename: wiki_badge.json
-          label: Wiki
-          message: ${{ job.status }}
-          color: ${{ job.status == 'success' && 'brightgreen' || 'red' }}
-          namedLogo: googledocs
-          logoColor: white
-          style: flat-square
