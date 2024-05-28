@@ -17,3 +17,9 @@ TEST_DATABASE_FILE: Path = Utils.forge.file(
     TEST_DATABASE_DIR / "test_database.db",
 )
 # =============================================================================
+
+# .so Lib files
+# =============================================================================
+LIB_DIR: Path = Utils.forge.dir(BASE_DIR / "build")
+UTILS_LIB_FILE: Path = LIB_DIR / "test.so"
+# =============================================================================

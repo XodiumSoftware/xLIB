@@ -1,1 +1,1 @@
-"""This module contains nothing."""  # noqa: N999
+"""This module contains nothing."""

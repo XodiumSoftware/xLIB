@@ -4,7 +4,7 @@ import ctypes
 import unittest
 
 from dalmatia import Utils
-from dardania.__config__ import UTILS_LIB_FILE
+from dalmatia.__config__ import UTILS_LIB_FILE
 
 
 class TestWrapper(unittest.TestCase):
