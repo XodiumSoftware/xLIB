@@ -2,13 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Dardania: Launch",
+      "name": "Dalmatia: Launch",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/dardania",
+      "program": "${workspaceFolder}/dalmatia",
       "console": "integratedTerminal",
       "justMyCode": true
-      // "preLaunchTask": "C: Compile to Shared Library"
     }
   ]
 }

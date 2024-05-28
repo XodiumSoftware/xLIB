@@ -1,9 +1,6 @@
 {
   "image": "python:3.12-bullseye",
   "remoteUser": "vscode@IllyrianEngineering",
-  "hostRequirements": {
-    "gpu": true
-  },
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": "true",
@@ -31,7 +28,6 @@
         "github.vscode-github-actions",
         "jock.svg",
         "ms-azuretools.vscode-docker",
-        "ms-vscode.cpptools",
         "ms-vscode.live-server",
         "ms-python.python",
         "ms-python.vscode-pylance",
@@ -45,8 +41,7 @@
     }
   },
   "onCreateCommand": {
-    "pipCommand": "pip install -r requirements.txt",
-    "aptCommand": "sudo apt-get update && sudo apt-get install -y gdb"
+    "pipCommand": "pip install -r requirements.txt"
   },
   "shutdownAction": "stopContainer"
 }

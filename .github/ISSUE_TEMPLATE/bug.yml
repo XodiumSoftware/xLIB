@@ -1,5 +1,5 @@
-name: Dardania Bug Report
-description: File a bug report for Dardania
+name: Dalmatia Bug Report
+description: File a bug report for Dalmatia
 labels: [bug]
 body:
   - type: markdown
@@ -12,7 +12,7 @@ body:
       label: Problem
       description: Please give a text description of how you reached the problem
       value: |
-        1. Install Dardania...
+        1. Install Dalmatia...
         2. Do this...
         3. Do that...
         4. Observe the error...
@@ -29,8 +29,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: Dardania Version
-      description: What version of Dardania are you running?
+      label: Dalmatia Version
+      description: What version of Dalmatia are you running?
       placeholder: DO NOT SAY "LATEST"
     validations:
       required: true
