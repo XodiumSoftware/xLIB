@@ -69,8 +69,7 @@ jobs:
 
       - id: get_version
         name: Get Version
-        run: |
-          echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(python ./workspaces/Dalmatia/setup.py --version)" >> $GITHUB_OUTPUT
 
       - id: create_release
         name: Create Release
