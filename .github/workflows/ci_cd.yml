@@ -22,7 +22,7 @@ jobs:
 
       - id: cache_dependencies
         name: Cache Dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@main
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -38,7 +38,7 @@ jobs:
 
       - id: upload_package
         name: Upload Package
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: package
           path: dist/*
@@ -49,7 +49,7 @@ jobs:
     steps:
       - id: download_package
         name: Download Package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@main
         with:
           name: package
 
@@ -63,7 +63,7 @@ jobs:
     steps:
       - id: download_package
         name: Download Package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@main
         with:
           name: package
 
