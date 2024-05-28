@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dardania: Launch",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/dardania",
+      "console": "integratedTerminal",
+      "justMyCode": true
+      // "preLaunchTask": "C: Compile to Shared Library"
+    }
+  ]
+}
