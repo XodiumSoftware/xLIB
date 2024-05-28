@@ -69,7 +69,9 @@ jobs:
 
       - id: get_version
         name: Get Version
-        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
+        run: |
+          cd package/dalmatia-1.0.0/dalmatia-1.0.0
+          echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
 
       - id: create_release
         name: Create Release
