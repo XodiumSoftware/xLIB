@@ -32,6 +32,10 @@ jobs:
         name: Install Dependencies
         run: pip install -e .
 
+      - id: get_version
+        name: Get Version
+        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_ENV
+
       - id: build_package
         name: Build Package
         run: python -m build
@@ -42,6 +46,9 @@ jobs:
         with:
           name: package
           path: dist/*
+
+    outputs:
+      version: ${{ env.VERSION }}
 
   test:
     needs: [build]
@@ -67,11 +74,15 @@ jobs:
         with:
           name: package
 
-      - id: get_version
-        name: Get Version
-        run: |
-          cd package/dalmatia-1.0.0/dalmatia-1.0.0
-          echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
+      # NOTE:
+      # we have an issue with getting the version from the setup.py file
+      # it cannot find the setup.py in the package.
+      # maybe we can get the version in the build job,
+      # and pass it as an output to the release job.
+      # this might fix the issue.
+      # - id: get_version
+      #   name: Get Version
+      #   run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
 
       - id: create_release
         name: Create Release
@@ -82,7 +93,7 @@ jobs:
           draft: ${{ contains(github.event.head_commit.message, '.draft') }}
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          tag_name: ${{ needs.build.outputs.version }}
 
       - id: upload_to_pypi
         name: Upload to PyPI
