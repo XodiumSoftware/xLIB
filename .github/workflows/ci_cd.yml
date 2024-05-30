@@ -66,7 +66,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
-      url: ${{ steps.upload_package.outputs.artifact-url }}
     steps:
       - id: download_package
         name: Download Package
@@ -76,21 +75,7 @@ jobs:
 
       - id: run_tests
         name: Run Tests
-        run: |
-          pip install unittest-xml-reporting
-          python -m xmlrunner discover -o test/results
-
-      - id: list_test_results
-        name: List Test Results
-        run: ls test/results/
-
-      - id: upload_package
-        name: Upload Package
-        uses: actions/upload-artifact@main
-        if: always()
-        with:
-          name: test-summary
-          path: "test/results/*"
+        run: python -m unittest discover
 
   release:
     needs: [build, test]
