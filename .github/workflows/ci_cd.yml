@@ -78,7 +78,7 @@ jobs:
         name: Run Tests
         run: |
           pip install unittest-xml-reporting
-          python -m unittest discover -o test/results
+          python -m xmlrunner discover -o test/results
 
       - id: test_summary
         name: Test Summary
