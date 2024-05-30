@@ -86,7 +86,7 @@ jobs:
         if: always()
         with:
           name: test-summary
-          path: "test/results/**/TEST-*.xml"
+          path: "test/results/*"
 
   release:
     needs: [build, test]
@@ -132,6 +132,7 @@ jobs:
         name: List dist contents
         run: ls dist/
 
+      # NOTE: trusted publisher is not working.
       - id: upload_to_pypi
         name: Upload to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1.8
