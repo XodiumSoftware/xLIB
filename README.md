@@ -18,8 +18,7 @@
 [![Contributors][contributors_shield_url]][contributors_url]
 [![Issues][issues_shield_url]][issues_url]
 [![Roadmap][roadmap_shield_url]][roadmap_url]<br />
-
-</div>
+[![CI/CD][workflow_shield_url]][workflow_url]</div>
 
 ## Table of Contents
 
@@ -67,6 +66,8 @@ Feel free to dive into the documentation to kickstart your journey with Dalmatia
 [issues_shield_url]: https://img.shields.io/github/issues/IllyrianEngineering/Dalmatia?style=for-the-badge&color=yellow
 [issues_url]: https://github.com/IllyrianEngineering/Dalmatia/issues
 [license_url]: https://github.com/IllyrianEngineering/Dalmatia?tab=AGPL-3.0-1-ov-file
+[workflow_shield_url]: https://github.com/IllyrianEngineering/Dalmatia/actions/workflows/ci_cd.yml/badge.svg
+[workflow_url]: https://github.com/IllyrianEngineering/Dalmatia/actions/workflows/ci_cd.yml
 [roadmap_shield_url]: https://img.shields.io/badge/Roadmap-Click%20Me!-purple.svg?style=for-the-badge
 [roadmap_url]: https://github.com/orgs/IllyrianEngineering/projects/4
 [security_url]: https://github.com/IllyrianEngineering/Dalmatia?tab=security-ov-file
