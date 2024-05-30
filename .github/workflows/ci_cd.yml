@@ -74,10 +74,28 @@ jobs:
         with:
           name: package
 
-      # NOTE: Use a 3rd-party action
       - id: run_tests
         name: Run Tests
-        run: python -m unittest discover
+        run: |
+          pip install unittest-xml-reporting
+          python -m unittest discover -o test/results
+
+      - id: test_summary
+        name: Test Summary
+        uses: test-summary/action@v2
+        if: always()
+        with:
+          paths: "test/results/**/TEST-*.xml"
+          output: "test/results/summary.md"
+          show: "all"
+
+      - id: upload_package
+        name: Upload Package
+        uses: actions/upload-artifact@main
+        if: always()
+        with:
+          name: test-summary
+          path: "test/results/summary.md"
 
   release:
     needs: [build, test]
@@ -126,6 +144,3 @@ jobs:
       - id: upload_to_pypi
         name: Upload to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1.8
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
