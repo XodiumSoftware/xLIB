@@ -4,11 +4,22 @@ run-name: "Illyrian's CI/CD"
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, '.deploy')
+    outputs:
+      VERSION: ${{ steps.get_version.outputs.VERSION }}
     steps:
       - id: checkout
         name: Checkout
@@ -31,6 +42,10 @@ jobs:
       - id: install_dependencies
         name: Install Dependencies
         run: pip install -e .
+
+      - id: get_version
+        name: Get Version
+        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
 
       - id: build_package
         name: Build Package
@@ -67,16 +82,6 @@ jobs:
         with:
           name: package
 
-      # NOTE:
-      # we have an issue with getting the version from the setup.py file
-      # it cannot find the setup.py in the package.
-      # maybe we can get the version in the build job,
-      # and pass it as an output to the release job.
-      # this might fix the issue.
-      - id: get_version
-        name: Get Version
-        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
-
       - id: create_release
         name: Create Release
         uses: softprops/action-gh-release@master
@@ -86,7 +91,7 @@ jobs:
           draft: ${{ contains(github.event.head_commit.message, '.draft') }}
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          tag_name: ${{ needs.build.outputs.version }}
 
       - id: upload_to_pypi
         name: Upload to PyPI
