@@ -51,6 +51,10 @@ jobs:
         name: Build Package
         run: python -m build
 
+      - id: list_dist_contents
+        name: List dist contents
+        run: ls dist/
+
       - id: upload_package
         name: Upload Package
         uses: actions/upload-artifact@main
@@ -75,6 +79,9 @@ jobs:
   release:
     needs: [build, test]
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_name }}
+      url: ${{ steps.create_release.outputs.url }}
     steps:
       - id: download_package
         name: Download Package
