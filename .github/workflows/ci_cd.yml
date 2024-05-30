@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
-      url: ${{ steps.run_tests.outputs.url }}
+      url: ${{ steps.upload_package.outputs.artifact-url }}
     steps:
       - id: download_package
         name: Download Package
@@ -80,22 +80,13 @@ jobs:
           pip install unittest-xml-reporting
           python -m xmlrunner discover -o test/results
 
-      - id: test_summary
-        name: Test Summary
-        uses: test-summary/action@v2
-        if: always()
-        with:
-          paths: "test/results/**/TEST-*.xml"
-          output: "test/results/summary.md"
-          show: "all"
-
       - id: upload_package
         name: Upload Package
         uses: actions/upload-artifact@main
         if: always()
         with:
           name: test-summary
-          path: "test/results/summary.md"
+          path: "test/results/**/TEST-*.xml"
 
   release:
     needs: [build, test]
