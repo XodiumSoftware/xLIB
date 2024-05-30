@@ -18,6 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, '.deploy')
+    environment:
+      name: ${{ github.ref_name }}
+      url: ${{ steps.upload_package.outputs.artifact-url }}
     outputs:
       VERSION: ${{ steps.get_version.outputs.VERSION }}
     steps:
@@ -61,6 +64,9 @@ jobs:
   test:
     needs: [build]
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_name }}
+      url: ${{ steps.run_tests.outputs.url }}
     steps:
       - id: download_package
         name: Download Package
@@ -68,6 +74,7 @@ jobs:
         with:
           name: package
 
+      # NOTE: Use a 3rd-party action
       - id: run_tests
         name: Run Tests
         run: python -m unittest discover
@@ -99,6 +106,9 @@ jobs:
   publish:
     needs: [build, test, release]
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_name }}
+      url: ${{ steps.upload_to_pypi.outputs.url }}
     permissions:
       id-token: write
     steps:
