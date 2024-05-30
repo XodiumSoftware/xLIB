@@ -80,6 +80,10 @@ jobs:
           pip install unittest-xml-reporting
           python -m xmlrunner discover -o test/results
 
+      - id: list_test_results
+        name: List Test Results
+        run: ls test/results/
+
       - id: upload_package
         name: Upload Package
         uses: actions/upload-artifact@main
