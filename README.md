@@ -11,7 +11,7 @@
   <br />
 </h1>
 
-<h4 align="center">A Library enforcing the DRY principle and making code REUSABLE.</h4><br />
+<h4 align="center">Our Library enforcing the DRY principle and making code REUSABLE.</h4><br />
 
 <div align="center">
 
