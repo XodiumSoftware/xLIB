@@ -1,19 +1,4 @@
 {
-  // Dardania Settings
-  "terminal.integrated.env.linux": {
-    "PYTHONPATH": "/workspaces/Dardania"
-  },
-  "terminal.integrated.env.osx": {
-    "PYTHONPATH": "/workspaces/Dardania"
-  },
-  "terminal.integrated.env.windows": {
-    "PYTHONPATH": "/workspaces/Dardania"
-  },
-  // Code Runner Settings
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.executorMap": {
-    "python": "$pythonPath -u $fullFileName"
-  },
   "code-runner.runInTerminal": true,
   // Editor Settings
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -56,7 +41,6 @@
   "material-icon-theme.folders.color": "#ef5350",
   "material-icon-theme.folders.associations": {
     "ISSUE_TEMPLATE": "template",
-    "dardania": "src",
     "dalmatia": "src"
   },
   // Python Analysis Settings
@@ -84,15 +68,5 @@
   "workbench.colorTheme": "Monokai Dimmed",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
-  "svg.preview.background": "dark-transparent",
-  // C/C++ Settings
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "files.associations": {
-    "ostream": "cpp"
-  }
+  "svg.preview.background": "dark-transparent"
 }
