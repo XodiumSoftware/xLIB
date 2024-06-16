@@ -3,7 +3,6 @@
 import ctypes
 from collections.abc import Callable
 from pathlib import Path
-from typing import Any
 
 
 class Wrapper:
@@ -26,7 +25,7 @@ class Wrapper:
             )
             raise OSError(error_msg) from e
 
-    def __getattr__(self: "Wrapper", func: str) -> Callable[..., Any]:
+    def __getattr__(self: "Wrapper", func: str) -> Callable[..., object]:
         """Gets the function from the library.
 
         Args:
