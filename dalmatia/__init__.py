@@ -1,4 +1,4 @@
-"""This module contains utility functions."""
+"""This package contains utility functions."""
 
 from dalmatia.database import Database
 from dalmatia.forger import Forger
