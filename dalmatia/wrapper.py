@@ -20,10 +20,8 @@ class Wrapper:
         try:
             self.lib = ctypes.CDLL(f"{path}")
         except OSError as e:
-            error_msg = (
-                f"Failed to initialize .so library: {path}. Error: {e!s}"
-            )
-            raise OSError(error_msg) from e
+            err_msg = f"Failed to initialize .so library: {path}. Error: {e!s}"
+            raise OSError(err_msg) from e
 
     def __getattr__(self: "Wrapper", func: str) -> Callable[..., object]:
         """Gets the function from the library.
@@ -41,8 +39,8 @@ class Wrapper:
             if isinstance(getattr(self.lib, func), ctypes._CFuncPtr):  # type: ignore[attr] # noqa: SLF001
                 return getattr(self.lib, func)
         except AttributeError as e:
-            error_msg = f"Failed to get function: {func}. Error: {e!s}"
-            raise AttributeError(error_msg) from e
+            err_msg = f"Failed to get function: {func}. Error: {e!s}"
+            raise AttributeError(err_msg) from e
         return self.__getattr__(func)
 
     def __dir__(self: "Wrapper") -> list[str]:
@@ -64,5 +62,5 @@ class Wrapper:
                 if isinstance(getattr(self.lib, x), ctypes._CFuncPtr)  # type: ignore[attr] # noqa: SLF001
             ]
         except AttributeError as e:
-            error_msg = f"Failed to get functions: {e!s}"
-            raise AttributeError(error_msg) from e
+            err_msg = f"Failed to get functions: {e!s}"
+            raise AttributeError(err_msg) from e

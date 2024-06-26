@@ -31,8 +31,8 @@ class Forger:
         try:
             path.mkdir(mode=mode, parents=parents, exist_ok=exist_ok)
         except OSError as e:
-            error_msg = f"Failed to forge directory: {path}. Error: {e!s}"
-            raise OSError(error_msg) from e
+            err_msg = f"Failed to forge directory: {path}. Error: {e!s}"
+            raise OSError(err_msg) from e
         return path
 
     dir = _forge_dir
@@ -60,8 +60,8 @@ class Forger:
         try:
             path.touch(mode=mode, exist_ok=exist_ok)
         except OSError as e:
-            error_msg = f"Failed to forge file: {path}. Error: {e!s}"
-            raise OSError(error_msg) from e
+            err_msg = f"Failed to forge file: {path}. Error: {e!s}"
+            raise OSError(err_msg) from e
         return path
 
     file = _forge_file
