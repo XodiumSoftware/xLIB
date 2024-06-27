@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 class Wrapper:
-    """A class that contains wrapper functions."""
+    """A class that contains wrap functions."""
 
     def __init__(self: "Wrapper", path: Path) -> None:
         """Initializes the .so library.

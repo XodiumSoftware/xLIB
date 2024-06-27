@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 
 class Database:
-    """A class used to represent a database module."""
+    """A class that contains database functions."""
 
     base = sqlo.declarative_base()
 
