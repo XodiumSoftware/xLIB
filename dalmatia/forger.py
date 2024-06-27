@@ -7,7 +7,7 @@ class Forger:
     """A class that contains forge functions."""
 
     @staticmethod
-    def _forge_dir(
+    def dir(
         path: Path,
         mode: int = 511,
         *,
@@ -35,10 +35,8 @@ class Forger:
             raise OSError(err_msg) from e
         return path
 
-    dir = _forge_dir
-
     @staticmethod
-    def _forge_file(
+    def file(
         path: Path,
         mode: int = 438,
         *,
@@ -63,5 +61,3 @@ class Forger:
             err_msg = f"Failed to forge file: {path}. Error: {e!s}"
             raise OSError(err_msg) from e
         return path
-
-    file = _forge_file

@@ -7,7 +7,7 @@ class Reader:
     """A class that contains read functions."""
 
     @staticmethod
-    def _read_file(path: Path) -> str:
+    def file(path: Path) -> str:
         """Read a file.
 
         Args:
@@ -18,5 +18,3 @@ class Reader:
         except Exception as e:
             err_msg = f"Failed to read file {path}. Error: {e!s}"
             raise OSError(err_msg) from e
-
-    file = _read_file

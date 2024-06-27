@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 class Database:
     """A class used to represent a database module."""
 
-    base = sqlo.declarative_base()
+    __base__ = sqlo.declarative_base()
 
     def __init__(self: "Database", path: Path) -> None:
         """Initialize the class.
@@ -20,18 +20,18 @@ class Database:
         Args:
             path: The path to the database file.
         """
-        self.engine = sql.create_engine(str(f"sqlite:///{path}"))
-        self.base.metadata.create_all(self.engine)
-        self.session = sqlo.sessionmaker(bind=self.engine)
+        self.__engine__ = sql.create_engine(str(f"sqlite:///{path}"))
+        self.__base__.metadata.create_all(self.__engine__)
+        self.__session__ = sqlo.sessionmaker(bind=self.__engine__)
 
     @contextmanager
-    def _db_session(self: "Database") -> Iterator[Session]:
+    def db_session(self: "Database") -> Iterator[Session]:
         """Context manager for a database session.
 
         Returns:
             The database session.
         """
-        session = self.session()
+        session = self.__session__()
         try:
             yield session
             session.commit()
@@ -41,50 +41,27 @@ class Database:
         finally:
             session.close()
 
-    db_session = _db_session
-
-    def _add_data(
+    def set_data(
         self: "Database",
         table: sqlo.DeclarativeMeta,
         data: dict[str, None | int | float | str | bytes],
     ) -> None:
-        """Add data to the database.
-
-        Args:
-            table: The table to add the data to.
-            data: The data to be added.
-        """
-        with self._db_session() as session:
-            for key, value in data.items():
-                record = session.query(table).filter_by(key=key).first()
-                if record is None:
-                    new_record = table(key=key, value=value)
-                    session.add(new_record)
-
-    add_data = _add_data
-
-    def _set_data(
-        self: "Database",
-        table: sqlo.DeclarativeMeta,
-        data: dict[str, None | int | float | str | bytes],
-    ) -> None:
-        """Update data in the database.
+        """Update data in the database or add if it does not exist.
 
         Args:
             table: The table to update the data in.
             data: The data to be updated.
         """
-        with self._db_session() as session:
+        with self.db_session() as session:
             for key, value in data.items():
                 record = session.query(table).filter_by(key=key).first()
                 if record is not None:
                     record.value = value
                 else:
-                    self._add_data(table, {key: value})
+                    new_record = table(key=key, value=value)
+                    session.add(new_record)
 
-    set_data = _set_data
-
-    def _delete_data(
+    def delete_data(
         self: "Database",
         table: sqlo.DeclarativeMeta,
         key: str,
@@ -95,14 +72,12 @@ class Database:
             table: The table to delete the data from.
             key: The key of the data to be deleted.
         """
-        with self._db_session() as session:
+        with self.db_session() as session:
             record = session.query(table).filter_by(key=key).first()
             if record is not None:
                 session.delete(record)
 
-    delete_data = _delete_data
-
-    def _get_data(
+    def get_data(
         self: "Database",
         table: sqlo.DeclarativeMeta,
         key: str,
@@ -116,8 +91,6 @@ class Database:
         Returns:
             The data from the database.
         """
-        with self._db_session() as session:
+        with self.db_session() as session:
             record = session.query(table).filter_by(key=key).first()
             return record.value if record is not None else "NULL"
-
-    get_data = _get_data
