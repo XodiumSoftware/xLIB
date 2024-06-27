@@ -6,7 +6,7 @@ description: A class that contains reader functions.
 
 ## "file" method
 
-{% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
+{% code title="class Reader" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     @staticmethod
     def file(path: Path) -> str: ...

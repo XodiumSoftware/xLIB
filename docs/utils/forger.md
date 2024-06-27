@@ -9,7 +9,13 @@ description: A class that contains forger functions.
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     @staticmethod
-    def dir(path: Path, mode: int = 511, *, parents: bool = True, exist_ok: bool = True) -> Path: ...
+    def dir(
+        path: Path,
+        mode: int = 511,
+        *,
+        parents: bool = True,
+        exist_ok: bool = True,
+    ) -> Path: ...
         """Forge a directory if it does not exist.
 
         Args:
@@ -32,7 +38,12 @@ description: A class that contains forger functions.
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     @staticmethod
-    def file(path: Path, mode: int = 438, *, exist_ok: bool = True) -> Path: ...
+    def file(
+        path: Path,
+        mode: int = 438,
+        *,
+        exist_ok: bool = True,
+    ) -> Path: ...
         """Forge a file if it does not exist.
 
         Args:

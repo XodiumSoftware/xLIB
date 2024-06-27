@@ -45,7 +45,7 @@ The best way how to use one of our official libraries:
 
 {% tabs %}
 {% tab title="Python" %}
-```sh
+```bash
 # Install via pip
 pip install --upgrade dalmatia
 ```
