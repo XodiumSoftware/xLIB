@@ -10,7 +10,7 @@ from dalmatia.__config__ import TEST_DATABASE_FILE
 from dalmatia.database import Database
 
 
-class TestTable(Utils.database.__base__):
+class TestTable(Utils.database.base):
     """A class to represent a test table."""
 
     __tablename__ = "test_table"
@@ -28,8 +28,8 @@ class TestDatabase(unittest.TestCase):
         cls.db_path: Path = Path(TEST_DATABASE_FILE)
         cls.db: Database = Database(cls.db_path)
         cls.TestTable = TestTable
-        cls.db.__base__.metadata.create_all(cls.db.__engine__)
-        cls.db.__base__.metadata.reflect(bind=cls.db.__engine__)
+        cls.db.base.metadata.create_all(cls.db.__engine__)
+        cls.db.base.metadata.reflect(bind=cls.db.__engine__)
 
     def test_set_data(self: "TestDatabase") -> None:
         """Tests the set_data method."""

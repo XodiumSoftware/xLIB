@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 class Database:
     """A class used to represent a database module."""
 
-    __base__ = sqlo.declarative_base()
+    base = sqlo.declarative_base()
 
     def __init__(self: "Database", path: Path) -> None:
         """Initialize the class.
@@ -21,7 +21,7 @@ class Database:
             path: The path to the database file.
         """
         self.__engine__ = sql.create_engine(str(f"sqlite:///{path}"))
-        self.__base__.metadata.create_all(self.__engine__)
+        self.base.metadata.create_all(self.__engine__)
         self.__session__ = sqlo.sessionmaker(bind=self.__engine__)
 
     @contextmanager
