@@ -1,6 +1,6 @@
 # Table of contents
 
-* [✨ Welcome!](README.md)
+* [👋 Welcome!](README.md)
 * [🏃 Quick Start](quick-start.md)
 
 ## 🛠️ UTILS
