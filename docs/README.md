@@ -18,7 +18,7 @@ layout:
 
 Welcome to Dalmatia! Here you'll find all the documentation you need to get up and running with the Dalmatia Library.
 
-## Want to jump right in?
+## First time here?
 
 Feeling like an eager beaver? Jump in to the quick start docs and get using the features right away:
 
@@ -26,9 +26,9 @@ Feeling like an eager beaver? Jump in to the quick start docs and get using the 
 [quick-start.md](quick-start.md)
 {% endcontent-ref %}
 
-## Want to deep dive?
+## Are you a veteran?
 
-Dive a little deeper and start exploring our Library to get an idea of everything that's possible.
+Hop right back to our Library and continue where you left off last time!
 
 {% content-ref url="broken-reference" %}
 [Broken link](broken-reference)

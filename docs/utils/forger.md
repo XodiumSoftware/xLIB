@@ -4,29 +4,6 @@ description: A class that contains forger functions.
 
 # ⚡ Forger
 
-{% hint style="info" %}
-**This library** uses a certain structure to make it easier readable at accessing the methods, we do this by assigning a variable to each class like this:
-
-{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
-```python
-class Utils:
-    """A class that contains utility functions."""
-
-    (
-        database,
-        forge,
-        read,
-        wrap,
-    ) = (
-        Database,
-        Forger,
-        Reader,
-        Wrapper,
-    )
-```
-{% endcode %}
-{% endhint %}
-
 ## "dir" method
 
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -82,3 +59,7 @@ class Utils:
     Utils.forge.file(...)
 ```
 {% endcode %}
+
+{% hint style="warning" %}
+[<mark style="color:orange;">**If you have questions on why we are using**</mark>** **<mark style="color:red;">**"forge"**</mark>** **<mark style="color:orange;">**instead of**</mark>** **<mark style="color:red;">**"Forger"**</mark><mark style="color:orange;">**, then click on me!**</mark>](../quick-start.md)
+{% endhint %}

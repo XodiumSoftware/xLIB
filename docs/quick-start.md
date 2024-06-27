@@ -15,7 +15,28 @@ layout:
 # 🏃 Quick Start
 
 {% hint style="warning" %}
-**-**
+<mark style="color:orange;">**This library**</mark> uses a certain structure to make it easier readable at accessing the methods, we do this by assigning a variable to each class like this:
+
+{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```python
+class Utils:
+    """A class that contains utility functions."""
+
+    (
+        database,
+        forge,
+        read,
+        wrap,
+    ) = (
+        Database,
+        Forger,
+        Reader,
+        Wrapper,
+    )
+```
+{% endcode %}
+
+<mark style="color:orange;">**So we kindly ask of you to keep using the structure for everyone's convenience!**</mark>
 {% endhint %}
 
 ## Install the library
@@ -32,5 +53,5 @@ pip install --upgrade dalmatia
 {% endtabs %}
 
 {% hint style="info" %}
-Y**ou can** use the buttons below to navigate faster to a previous or next page!
+<mark style="color:blue;">Y</mark><mark style="color:blue;">**ou can**</mark> use the buttons below to navigate <mark style="color:purple;">faster</mark> to a previous or next page!
 {% endhint %}
