@@ -10,7 +10,7 @@ from dalmatia.__config__ import TEST_DATABASE_FILE
 from dalmatia.database import Database
 
 
-class TestTable(Utils.database.base):
+class TestTable(Utils.db.base):
     """A class to represent a test table."""
 
     __tablename__ = "test_table"
