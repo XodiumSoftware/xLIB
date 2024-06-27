@@ -4,7 +4,7 @@ description: A class that contains database functions.
 
 # ⚡ Database
 
-## "\_\_init\_\_" method
+## "<mark style="color:purple;">\_\_init\_\_</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -17,7 +17,7 @@ description: A class that contains database functions.
 ```
 {% endcode %}
 
-## "db\_session" method
+## "<mark style="color:orange;">db\_session</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -31,7 +31,7 @@ description: A class that contains database functions.
 ```
 {% endcode %}
 
-## "set\_data" method
+## "<mark style="color:orange;">set\_data</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -49,7 +49,7 @@ description: A class that contains database functions.
 ```
 {% endcode %}
 
-## "delete\_data" method
+## "<mark style="color:orange;">delete\_data</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -67,7 +67,7 @@ description: A class that contains database functions.
 ```
 {% endcode %}
 
-## "get\_data" method
+## "<mark style="color:orange;">get\_data</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python

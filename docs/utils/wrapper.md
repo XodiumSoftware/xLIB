@@ -4,7 +4,7 @@ description: A class that contains wrapper functions.
 
 # ⚡ Wrapper
 
-## "\_\_init\_\_" method
+## "<mark style="color:purple;">\_\_init\_\_</mark>" method
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -20,7 +20,7 @@ description: A class that contains wrapper functions.
 ```
 {% endcode %}
 
-## "\_\_**getattr\_\_**" method
+## "<mark style="color:purple;">\_\_</mark><mark style="color:purple;">**getattr\_\_**</mark>" method
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -39,7 +39,7 @@ description: A class that contains wrapper functions.
 ```
 {% endcode %}
 
-## "\_\_**dir\_\_**" method
+## "<mark style="color:purple;">\_\_</mark><mark style="color:purple;">**dir\_\_**</mark>" method
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python

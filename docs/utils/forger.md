@@ -4,7 +4,7 @@ description: A class that contains forger functions.
 
 # ⚡ Forger
 
-## "dir" method
+## "<mark style="color:orange;">dir</mark>" method
 
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
@@ -33,7 +33,7 @@ description: A class that contains forger functions.
 ```
 {% endcode %}
 
-## "file" method
+## "<mark style="color:orange;">file</mark>" method
 
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python

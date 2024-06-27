@@ -4,7 +4,7 @@ description: A class that contains reader functions.
 
 # ⚡ Reader
 
-## "file" method
+## "<mark style="color:orange;">file</mark>" method
 
 {% code title="class Reader" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
