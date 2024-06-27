@@ -1,9 +1,11 @@
 ---
-description: A class that contains forge functions.
+description: A class that contains database functions.
 ---
 
-# forger.py
+# ⚡ Forger
 
-
-
-{% @github-files/github-code-block url="https://github.com/IllyrionSoftware/Dalmatia/blob/main/dalmatia/forger.py" fullWidth="true" %}
+{% code title="forger.py" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```python
+// Some code
+```
+{% endcode %}

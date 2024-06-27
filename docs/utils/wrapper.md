@@ -1,9 +1,11 @@
 ---
-description: A class that contains wrap functions.
+description: A class that contains database functions.
 ---
 
-# wrapper.py
+# ⚡ Wrapper
 
-
-
-{% @github-files/github-code-block url="https://github.com/IllyrionSoftware/Dalmatia/blob/main/dalmatia/wrapper.py" %}
+{% code title="wrapper.py" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```python
+// Some code
+```
+{% endcode %}

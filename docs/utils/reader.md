@@ -1,9 +1,11 @@
 ---
-description: A class that contains read functions.
+description: A class that contains database functions.
 ---
 
-# reader.py
+# ⚡ Reader
 
-
-
-{% @github-files/github-code-block url="https://github.com/IllyrionSoftware/Dalmatia/blob/main/dalmatia/reader.py" %}
+{% code title="reader.py" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```python
+// Some code
+```
+{% endcode %}
