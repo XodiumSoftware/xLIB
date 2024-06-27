@@ -94,10 +94,10 @@ description: A class that contains database functions.
 ```python
     from dalmatia import Utils
 
-    Utils.database.db_session(...)
-    Utils.database.set_data(...)
-    Utils.database.delete_data(...)
-    Utils.database.get_data(...)
+    Utils.db.db_session(...)
+    Utils.db.set_data(...)
+    Utils.db.delete_data(...)
+    Utils.db.get_data(...)
 ```
 {% endcode %}
 
