@@ -1,16 +1,30 @@
+---
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 🏃 Quick Start
 
-{% hint style="info" %}
-**Good to know:** A quick start guide can be good to help folks get up and running with your API in a few steps. Some people prefer diving in with the basics rather than meticulously reading every page of documentation!
+{% hint style="warning" %}
+**-**
 {% endhint %}
 
 ## Install the library
 
-The best way to interact with our API is to use one of our official libraries:
+The best way how to use one of our official libraries:
 
 {% tabs %}
 {% tab title="Python" %}
-```
+```sh
 # Install via pip
 pip install --upgrade dalmatia
 ```
@@ -18,5 +32,5 @@ pip install --upgrade dalmatia
 {% endtabs %}
 
 {% hint style="info" %}
-**Good to know:** Using tabs to separate out different languages is a great way to present technical examples or code documentation without cramming your docs with extra sections or pages per language.
+Y**ou can** use the buttons below to navigate to a previous or next page fast!
 {% endhint %}
