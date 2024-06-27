@@ -55,7 +55,7 @@ class Utils:
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     @staticmethod
-    def file(path: Path, mode: int = 438, *, exist_ok: bool = True) -> Path:
+    def file(path: Path, mode: int = 438, *, exist_ok: bool = True) -> Path: ...
         """Forge a file if it does not exist.
 
         Args:

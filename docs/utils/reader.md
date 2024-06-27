@@ -32,7 +32,7 @@ class Utils:
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     @staticmethod
-    def file(path: Path) -> str:
+    def file(path: Path) -> str: ...
         """Read a file.
 
         Args:
