@@ -10,7 +10,7 @@ class Utils:
     """A class that contains utility functions."""
 
     (
-        database,
+        db,
         forge,
         read,
         wrap,
