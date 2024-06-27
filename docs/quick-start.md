@@ -32,5 +32,5 @@ pip install --upgrade dalmatia
 {% endtabs %}
 
 {% hint style="info" %}
-Y**ou can** use the buttons below to navigate to a previous or next page fast!
+Y**ou can** use the buttons below to navigate faster to a previous or next page!
 {% endhint %}
