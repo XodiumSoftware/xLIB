@@ -12,11 +12,11 @@ layout:
     visible: false
 ---
 
-# ✨ Welcome!
+# 👋 Welcome!
 
 ## Welcome to Dalmatia
 
-Welcome to Dalmatia! Here you'll find all the documentation you need to get up and running with the Dalmatia Library.
+Here you'll find all the documentation you need to get up and running with the Dalmatia Library.
 
 ## First time here?
 
