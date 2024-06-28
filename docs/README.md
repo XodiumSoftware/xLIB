@@ -20,7 +20,7 @@ Here you'll find all the documentation you need to get up and running with the l
 
 ## First time here?
 
-Feeling like an eager beaver? Jump in to the quick start docs and get using the features right away:
+Jump in to the <mark style="color:blue;">quick start page</mark> and get using the tools right away:
 
 {% content-ref url="quick-start.md" %}
 [quick-start.md](quick-start.md)
