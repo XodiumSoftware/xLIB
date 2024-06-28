@@ -44,7 +44,7 @@ class Database:
     def set_data(
         self: "Database",
         table: sqlo.DeclarativeMeta,
-        data: dict[str, None | int | float | str | bytes],
+        data: dict[str, int | float | str | bytes | None],
     ) -> None:
         """Update data in the database or add if it does not exist.
 
@@ -81,8 +81,8 @@ class Database:
         self: "Database",
         table: sqlo.DeclarativeMeta,
         key: str,
-        default: None | float | str | bytes = "NULL",
-    ) -> None | int | float | str | bytes:
+        default: float | str | bytes | None = "NULL",
+    ) -> int | float | str | bytes | None:
         """Get data from the database.
 
         Args:
