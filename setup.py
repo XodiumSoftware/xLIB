@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="Dalmatium",
-    version="1.2.0",
+    version="1.2.1",
     url="https://github.com/IllyrionSoftware/Dalmatium",
     license=Path("LICENSE.md").read_text(),
     description="CAD addon/plug-in to automize frameworks.",
@@ -34,7 +34,7 @@ setup(
     project_urls={
         "Source Code": "https://github.com/IllyrionSoftware/Dalmatium",
         "Bug Tracker": "https://github.com/IllyrionSoftware/Dalmatium/issues",
-        "Documentation": "https://wiki.IllyrionSoftware.com/",
+        "Documentation": "https://wiki.illyrion.eu/",
         "Funding": "https://buymeacoffee.com/illyrius",
     },
 )
