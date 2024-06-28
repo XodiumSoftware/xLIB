@@ -4,6 +4,8 @@ description: A class that contains forger functions.
 
 # ⚡ Forger
 
+***
+
 ## "<mark style="color:orange;">dir</mark>" method
 
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -33,6 +35,8 @@ description: A class that contains forger functions.
 ```
 {% endcode %}
 
+***
+
 ## "<mark style="color:orange;">file</mark>" method
 
 {% code title="class Forger" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -60,6 +64,8 @@ description: A class that contains forger functions.
 ```
 {% endcode %}
 
+***
+
 ## Usage
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -70,6 +76,8 @@ description: A class that contains forger functions.
     Utils.forge.file(...)
 ```
 {% endcode %}
+
+***
 
 {% hint style="warning" %}
 [<mark style="color:orange;">**If you have questions on why we are using**</mark>** **<mark style="color:red;">**"forge"**</mark>** **<mark style="color:orange;">**instead of**</mark>** **<mark style="color:red;">**"Forger"**</mark><mark style="color:orange;">**, then click on me!**</mark>](../quick-start.md)

@@ -39,6 +39,8 @@ class Utils:
 <mark style="color:orange;">**So we kindly ask of you to keep using the structure for everyone's convenience!**</mark>
 {% endhint %}
 
+***
+
 ## Install the library
 
 The best way how to use one of our official libraries:
@@ -51,6 +53,8 @@ pip install --upgrade dalmatium
 ```
 {% endtab %}
 {% endtabs %}
+
+***
 
 {% hint style="info" %}
 <mark style="color:blue;">Y</mark><mark style="color:blue;">**ou can**</mark> use the buttons below to navigate <mark style="color:purple;">faster</mark> to a previous or next page!

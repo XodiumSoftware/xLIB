@@ -4,6 +4,8 @@ description: A class that contains database functions.
 
 # ⚡ Database
 
+***
+
 ## "<mark style="color:purple;">\_\_init\_\_</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -16,6 +18,8 @@ description: A class that contains database functions.
         """
 ```
 {% endcode %}
+
+***
 
 ## "<mark style="color:orange;">db\_session</mark>" method
 
@@ -30,6 +34,8 @@ description: A class that contains database functions.
         """
 ```
 {% endcode %}
+
+***
 
 ## "<mark style="color:orange;">set\_data</mark>" method
 
@@ -49,6 +55,8 @@ description: A class that contains database functions.
 ```
 {% endcode %}
 
+***
+
 ## "<mark style="color:orange;">delete\_data</mark>" method
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -66,6 +74,8 @@ description: A class that contains database functions.
         """
 ```
 {% endcode %}
+
+***
 
 ## "<mark style="color:orange;">get\_data</mark>" method
 
@@ -90,6 +100,8 @@ description: A class that contains database functions.
 ```
 {% endcode %}
 
+***
+
 ## Usage
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -102,6 +114,8 @@ description: A class that contains database functions.
     Utils.db.get_data(...)
 ```
 {% endcode %}
+
+***
 
 {% hint style="warning" %}
 [<mark style="color:orange;">**If you have questions on why we are using**</mark>** **<mark style="color:red;">**"db"**</mark>** **<mark style="color:orange;">**instead of**</mark>** **<mark style="color:red;">**"Database"**</mark><mark style="color:orange;">**, then click on me!**</mark>](../quick-start.md)

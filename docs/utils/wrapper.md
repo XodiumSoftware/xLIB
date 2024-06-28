@@ -4,6 +4,8 @@ description: A class that contains wrapper functions.
 
 # ⚡ Wrapper
 
+***
+
 ## "<mark style="color:purple;">\_\_init\_\_</mark>" method
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -19,6 +21,8 @@ description: A class that contains wrapper functions.
         """
 ```
 {% endcode %}
+
+***
 
 ## "<mark style="color:purple;">\_\_</mark><mark style="color:purple;">**getattr\_\_**</mark>" method
 
@@ -39,6 +43,8 @@ description: A class that contains wrapper functions.
 ```
 {% endcode %}
 
+***
+
 ## "<mark style="color:purple;">\_\_</mark><mark style="color:purple;">**dir\_\_**</mark>" method
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -58,6 +64,8 @@ description: A class that contains wrapper functions.
 ```
 {% endcode %}
 
+***
+
 ## Usage
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
@@ -68,6 +76,8 @@ description: A class that contains wrapper functions.
     Utils.wrap.__dir__(...)
 ```
 {% endcode %}
+
+***
 
 {% hint style="warning" %}
 [<mark style="color:orange;">**If you have questions on why we are using**</mark>** **<mark style="color:red;">**"wrap"**</mark>** **<mark style="color:orange;">**instead of**</mark>** **<mark style="color:red;">**"Wrapper"**</mark><mark style="color:orange;">**, then click on me!**</mark>](../quick-start.md)

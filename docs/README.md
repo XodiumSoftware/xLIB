@@ -18,6 +18,8 @@ layout:
 
 Here you'll find all the documentation you need to get up and running with the library.
 
+***
+
 ## First time here?
 
 Jump in to the <mark style="color:blue;">quick start page</mark> and get using the tools right away:
@@ -25,6 +27,8 @@ Jump in to the <mark style="color:blue;">quick start page</mark> and get using t
 {% content-ref url="quick-start.md" %}
 [quick-start.md](quick-start.md)
 {% endcontent-ref %}
+
+***
 
 ## Are you a veteran?
 
