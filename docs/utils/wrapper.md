@@ -62,7 +62,7 @@ description: A class that contains wrapper functions.
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    from dalmatia import Utils
+    from dalmatium import Utils
 
     Utils.wrap.__getattr__(...)
     Utils.wrap.__dir__(...)

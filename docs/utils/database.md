@@ -75,12 +75,14 @@ description: A class that contains database functions.
         self: "Database",
         table: sqlo.DeclarativeMeta,
         key: str,
-    ) -> str: ...
+        default: None | float | str | bytes = "NULL",
+    ) -> None | int | float | str | bytes:
         """Get data from the database.
 
         Args:
             table: The table to get the data from.
             key: The key to get the data for.
+            default: The default value if the data does not exist.
 
         Returns:
             The data from the database.
@@ -92,7 +94,7 @@ description: A class that contains database functions.
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    from dalmatia import Utils
+    from dalmatium import Utils
 
     Utils.db.db_session(...)
     Utils.db.set_data(...)

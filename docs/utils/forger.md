@@ -64,7 +64,7 @@ description: A class that contains forger functions.
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    from dalmatia import Utils
+    from dalmatium import Utils
 
     Utils.forge.dir(...)
     Utils.forge.file(...)

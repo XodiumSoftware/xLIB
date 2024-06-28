@@ -22,7 +22,7 @@ description: A class that contains reader functions.
 
 {% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    from dalmatia import Utils
+    from dalmatium import Utils
 
     Utils.read.file(...)
 ```
