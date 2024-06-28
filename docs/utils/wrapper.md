@@ -80,5 +80,5 @@ description: A class that contains wrapper functions.
 ***
 
 {% hint style="warning" %}
-[<mark style="color:orange;">**If you have questions on why we are using**</mark>** **<mark style="color:red;">**"wrap"**</mark>** **<mark style="color:orange;">**instead of**</mark>** **<mark style="color:red;">**"Wrapper"**</mark><mark style="color:orange;">**, then click on me!**</mark>](../quick-start.md)
+[<mark style="color:orange;">**Click on me if you have questions on why we are using**</mark>** **<mark style="color:red;">**"wrap"**</mark>** **<mark style="color:orange;">**instead of**</mark>** **<mark style="color:red;">**"Wrapper"**</mark><mark style="color:orange;">**.**</mark>](../quick-start.md)
 {% endhint %}
