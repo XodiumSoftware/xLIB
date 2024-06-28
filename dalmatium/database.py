@@ -81,8 +81,8 @@ class Database:
         self: "Database",
         table: sqlo.DeclarativeMeta,
         key: str,
-        default: str = "NULL",
-    ) -> str:
+        default: None | float | str | bytes = "NULL",
+    ) -> None | int | float | str | bytes:
         """Get data from the database.
 
         Args:

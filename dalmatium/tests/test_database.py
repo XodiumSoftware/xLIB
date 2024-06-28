@@ -5,9 +5,9 @@ from pathlib import Path
 
 from sqlalchemy import Column, String
 
-from dalmatia import Utils
-from dalmatia.__config__ import TEST_DATABASE_FILE
-from dalmatia.database import Database
+from dalmatium import Utils
+from dalmatium.__config__ import TEST_DATABASE_FILE
+from dalmatium.database import Database
 
 
 class TestTable(Utils.db.base):
