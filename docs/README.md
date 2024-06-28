@@ -16,7 +16,7 @@ layout:
 
 ## Welcome to Dalmatium
 
-Here you'll find all the documentation you need to get up and running with the Dalmatium Library.
+Here you'll find all the documentation you need to get up and running with the library.
 
 ## First time here?
 
