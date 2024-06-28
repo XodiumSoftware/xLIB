@@ -18,6 +18,18 @@ setup(
     install_requires=Path("requirements.txt").read_text().splitlines(),
     python_requires=">=3.12",
     package_data={"*": ["*.py", "py.typed"]},
+    data_files=[
+        (
+            "",
+            [
+                "CODE_OF_CONDUCT.md",
+                "CONTRIBUTING.md",
+                "LICENSE.md",
+                "README.md",
+                "requirements.txt",
+            ],
+        ),
+    ],
     zip_safe=False,
     project_urls={
         "Source Code": "https://github.com/IllyrionSoftware/Dalmatium",
