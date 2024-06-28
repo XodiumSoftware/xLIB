@@ -81,16 +81,18 @@ class Database:
         self: "Database",
         table: sqlo.DeclarativeMeta,
         key: str,
+        default: str = "NULL",
     ) -> str:
         """Get data from the database.
 
         Args:
             table: The table to get the data from.
             key: The key to get the data for.
+            default: The default value if the data does not exist.
 
         Returns:
             The data from the database.
         """
         with self.db_session() as session:
             record = session.query(table).filter_by(key=key).first()
-            return record.value if record is not None else "NULL"
+            return record.value if record is not None else default
