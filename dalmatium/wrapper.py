@@ -8,7 +8,7 @@ from pathlib import Path
 class Wrapper:
     """A class that contains wrap functions."""
 
-    def __init__(self: "Wrapper", path: Path) -> None:
+    def __init__(self, path: Path) -> None:
         """Initializes the .so library.
 
         Args:
@@ -23,7 +23,7 @@ class Wrapper:
             err_msg = f"Failed to initialize .so library: {path}. Error: {e!s}"
             raise OSError(err_msg) from e
 
-    def __getattr__(self: "Wrapper", func: str) -> Callable[..., object]:
+    def __getattr__(self, func: str) -> Callable[..., object]:
         """Gets the function from the library.
 
         Args:
@@ -43,7 +43,7 @@ class Wrapper:
             raise AttributeError(err_msg) from e
         return self.__getattr__(func)
 
-    def __dir__(self: "Wrapper") -> list[str]:
+    def __dir__(self) -> list[str]:
         """Gets the functions in the library.
 
         Args:

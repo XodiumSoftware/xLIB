@@ -14,7 +14,7 @@ class Database:
 
     base = sqlo.declarative_base()
 
-    def __init__(self: "Database", path: Path) -> None:
+    def __init__(self, path: Path) -> None:
         """Initialize the class.
 
         Args:
@@ -25,7 +25,7 @@ class Database:
         self.__session__ = sqlo.sessionmaker(bind=self.__engine__)
 
     @contextmanager
-    def db_session(self: "Database") -> Iterator[Session]:
+    def db_session(self) -> Iterator[Session]:
         """Context manager for a database session.
 
         Returns:
@@ -42,7 +42,7 @@ class Database:
             session.close()
 
     def set_data(
-        self: "Database",
+        self,
         table: sqlo.DeclarativeMeta,
         data: dict[str, int | float | str | bytes | None],
     ) -> None:
@@ -62,7 +62,7 @@ class Database:
                     session.add(new_record)
 
     def delete_data(
-        self: "Database",
+        self,
         table: sqlo.DeclarativeMeta,
         key: str,
     ) -> None:
@@ -78,7 +78,7 @@ class Database:
                 session.delete(record)
 
     def get_data(
-        self: "Database",
+        self,
         table: sqlo.DeclarativeMeta,
         key: str,
         default: float | str | bytes | None = "NULL",
