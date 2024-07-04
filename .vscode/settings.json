@@ -2,6 +2,7 @@
   // General Settings
   "code-runner.runInTerminal": true,
   "extensions.ignoreRecommendations": true,
+  "scm.experimental.showHistoryGraph": true,
 
   // Editor Settings
   "editor.defaultFormatter": "esbenp.prettier-vscode",
