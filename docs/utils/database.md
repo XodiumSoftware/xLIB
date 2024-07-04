@@ -10,7 +10,7 @@ description: A class that contains database functions.
 
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    def __init__(self: "Database", path: Path) -> None: ...
+    def __init__(self, path: Path) -> None: ...
         """Initialize the class.
 
         Args:
@@ -26,7 +26,7 @@ description: A class that contains database functions.
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     @contextmanager
-    def db_session(self: "Database") -> Iterator[Session]: ...
+    def db_session(self) -> Iterator[Session]: ...
         """Context manager for a database session.
 
         Returns:
@@ -42,7 +42,7 @@ description: A class that contains database functions.
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     def set_data(
-        self: "Database",
+        self,
         table: sqlo.DeclarativeMeta,
         data: dict[str, None | int | float | str | bytes],
     ) -> None: ...
@@ -62,7 +62,7 @@ description: A class that contains database functions.
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     def delete_data(
-        self: "Database",
+        self,
         table: sqlo.DeclarativeMeta,
         key: str,
     ) -> None: ...
@@ -82,7 +82,7 @@ description: A class that contains database functions.
 {% code title="class Database" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
     def get_data(
-        self: "Database",
+        self,
         table: sqlo.DeclarativeMeta,
         key: str,
         default: None | float | str | bytes = "NULL",

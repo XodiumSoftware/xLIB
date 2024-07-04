@@ -10,7 +10,7 @@ description: A class that contains wrapper functions.
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    def __init__(self: "Wrapper", path: Path) -> None: ...
+    def __init__(self, path: Path) -> None: ...
         """Initializes the .so library.
 
         Args:
@@ -28,7 +28,7 @@ description: A class that contains wrapper functions.
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    def __getattr__(self: "Wrapper", func: str) -> Callable[..., object]: ...
+    def __getattr__(self, func: str) -> Callable[..., object]: ...
         """Gets the function from the library.
 
         Args:
@@ -49,7 +49,7 @@ description: A class that contains wrapper functions.
 
 {% code title="class Wrapper" overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```python
-    def __dir__(self: "Wrapper") -> list[str]: ...
+    def __dir__(self) -> list[str]: ...
         """Gets the functions in the library.
 
         Args:
