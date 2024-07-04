@@ -26,6 +26,8 @@ _OPERATORS: dict[str, Callable[[Any, Any], bool]] = {
     "<": ope.lt,
 }
 
+# Theme constants
+# =============================================================================
 THEME_DARK: str = "dark"
 THEME_LIGHT: str = "light"
 STYLESHEET: str = "stylesheet"
@@ -41,6 +43,7 @@ ERROR_INVALID_THEME = (
 ERROR_INVALID_QUALIFIER = (
     "Invalid character in qualifier. Available qualifiers {}"
 )
+# =============================================================================
 
 
 class Theme:
