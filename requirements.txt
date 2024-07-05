@@ -1,4 +1,3 @@
 build
-pyside6
 setuptools
 sqlalchemy
