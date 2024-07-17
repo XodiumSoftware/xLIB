@@ -1,7 +1,6 @@
 use libloading::{Library, Symbol};
 use std::collections::HashSet;
 use std::ffi::CString;
-use std::os::raw::c_void;
 
 pub struct Wrapper {
     lib: Library,

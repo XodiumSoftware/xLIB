@@ -1,5 +1,5 @@
 use std::fs;
-use std::io::{self, Read};
+use std::io::{self};
 use std::path::Path;
 
 pub struct Reader;

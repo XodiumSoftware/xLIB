@@ -1,7 +1,10 @@
+use crate::forger::Forger;
 use std::env;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
-pub struct Config;
+pub struct Config {
+    // Add fields and methods here if needed
+}
 
 impl Config {
     // General
