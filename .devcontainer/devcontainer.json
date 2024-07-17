@@ -1,5 +1,5 @@
 {
-  "image": "python:3.12-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/rust",
   "remoteUser": "root",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
@@ -12,31 +12,19 @@
     }
   },
   "customizations": {
-    "settings": {
-      "python.defaultInterpreterPath": "/usr/local/bin/python"
-    },
     "vscode": {
       "extensions": [
-        "charliermarsh.ruff",
         "esbenp.prettier-vscode",
         "formulahendry.code-runner",
         "github.copilot",
         "github.vscode-github-actions",
-        "ms-vscode.live-server",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
         "pkief.material-icon-theme",
         "qwtel.sqlite-viewer",
-        "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
         "usernamehw.errorlens",
-        "visualstudioexptteam.vscodeintellicode",
         "vsls-contrib.gistfs"
       ]
     }
-  },
-  "onCreateCommand": {
-    "pipCommand": "pip install -r requirements.txt"
   },
   "shutdownAction": "stopContainer"
 }

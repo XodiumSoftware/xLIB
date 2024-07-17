@@ -1,11 +1,4 @@
 {
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit",
-      "source.organizeImports": "explicit"
-    },
-    "editor.defaultFormatter": "charliermarsh.ruff"
-  },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
@@ -34,22 +27,6 @@
     "dalmatium": "src"
   },
   "material-icon-theme.folders.color": "#ef5350",
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.autoSearchPaths": true,
-  "python.analysis.completeFunctionParens": true,
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportWildcardImportFromLibrary": "none"
-  },
-  "python.analysis.importFormat": "absolute",
-  "python.analysis.inlayHints.pytestParameters": true,
-  "python.analysis.typeCheckingMode": "strict",
-  "python.createEnvironment.trigger": "off",
-  "python.languageServer": "Pylance",
-  "python.testing.pytestEnabled": false,
-  "python.testing.unittestArgs": ["-v", "-s", "./", "-p", "test_*.py"],
-  "python.testing.unittestEnabled": true,
-  "ruff.nativeServer": true,
   "scm.experimental.showHistoryGraph": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "workbench.colorTheme": "Monokai Dimmed",
