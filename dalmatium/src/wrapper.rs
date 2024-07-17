@@ -3,12 +3,15 @@ use std::collections::HashSet;
 use std::ffi::CString;
 
 pub struct Wrapper {
-    lib: Library,
+    pub(crate) lib: Library,
 }
 
 impl Wrapper {
     pub fn new(lib_path: &str) -> Self {
-        let lib = Library::new(lib_path).expect("Failed to load library");
+        let lib = unsafe {
+            let msg = "Failed to load library";
+            Library::new(lib_path).expect(msg)
+        };
         Self { lib }
     }
 
@@ -26,11 +29,13 @@ impl Wrapper {
     ///
     /// * `AttributeError` - If the function could not be found.
     pub fn get_function(&self, func: &str) -> Symbol<'_, unsafe extern "C" fn()> {
-        let func_cstr = CString::new(func).expect("CString::new failed");
+        let msg = "CString::new failed";
+        let func_cstr = CString::new(func).expect(msg);
         unsafe {
+            let msg = "Failed to get function";
             self.lib
                 .get::<unsafe extern "C" fn()>(func_cstr.as_bytes_with_nul())
-                .expect("Failed to get function")
+                .expect(msg)
         }
     }
 

@@ -18,6 +18,4 @@ impl Utils {
     pub const WRAP: Wrapper = Wrapper;
 }
 
-fn main() {
-    println!("Hello, world!");
-}
+fn main() {}
