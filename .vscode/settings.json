@@ -28,6 +28,7 @@
   },
   "material-icon-theme.folders.color": "#ef5350",
   "scm.experimental.showHistoryGraph": true,
+  "rust-analyzer.linkedProjects": ["Cargo.toml"],
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "workbench.colorTheme": "Monokai Dimmed",
   "workbench.iconTheme": "material-icon-theme",
