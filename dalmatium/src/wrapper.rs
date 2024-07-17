@@ -44,7 +44,7 @@ impl Wrapper {
     ///
     /// * `Exception` - If the functions could not be retrieved.
     pub fn list_functions(&self) -> HashSet<String> {
-        let mut functions = HashSet::new();
+        let functions = HashSet::new();
         // Rust's libloading does not provide a direct way to list all symbols in a library.
         // This functionality would depend on the specific use case and how the library exposes its symbols.
         // For demonstration, we're returning an empty set.
