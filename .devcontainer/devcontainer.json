@@ -27,6 +27,7 @@
         "ms-python.vscode-pylance",
         "pkief.material-icon-theme",
         "qwtel.sqlite-viewer",
+        "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
         "usernamehw.errorlens",
         "visualstudioexptteam.vscodeintellicode",
