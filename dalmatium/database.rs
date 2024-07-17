@@ -1,8 +1,8 @@
-use std::path::PathBuf;
 use diesel::prelude::*;
 use diesel::sqlite::SqliteConnection;
-use r2d2_diesel::ConnectionManager;
 use r2d2::{Pool, PooledConnection};
+use r2d2_diesel::ConnectionManager;
+use std::path::PathBuf;
 
 pub struct Database {
     pool: Pool<ConnectionManager<SqliteConnection>>,
@@ -31,6 +31,8 @@ impl Database {
     ///
     /// * `PooledConnection<ConnectionManager<SqliteConnection>>` - The database session.
     pub fn db_session(&self) -> PooledConnection<ConnectionManager<SqliteConnection>> {
-        self.pool.get().expect("Failed to get a connection from the pool.")
+        self.pool
+            .get()
+            .expect("Failed to get a connection from the pool.")
     }
 }

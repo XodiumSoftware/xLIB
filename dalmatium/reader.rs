@@ -1,6 +1,6 @@
 use std::fs;
-use std::path::Path;
 use std::io::{self, Read};
+use std::path::Path;
 
 pub struct Reader;
 

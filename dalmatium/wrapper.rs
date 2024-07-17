@@ -1,7 +1,7 @@
+use libloading::{Library, Symbol};
 use std::collections::HashSet;
 use std::ffi::CString;
 use std::os::raw::c_void;
-use libloading::{Library, Symbol};
 
 pub struct Wrapper {
     lib: Library,
@@ -26,10 +26,11 @@ impl Wrapper {
     /// # Errors
     ///
     /// * `AttributeError` - If the function could not be found.
-    pub fn get_function(&self, func: &str) -> Symbol<'_, unsafe extern fn()> {
+    pub fn get_function(&self, func: &str) -> Symbol<'_, unsafe extern "C" fn()> {
         let func_cstr = CString::new(func).expect("CString::new failed");
         unsafe {
-            self.lib.get::<unsafe extern fn()>(func_cstr.as_bytes_with_nul())
+            self.lib
+                .get::<unsafe extern "C" fn()>(func_cstr.as_bytes_with_nul())
                 .expect("Failed to get function")
         }
     }

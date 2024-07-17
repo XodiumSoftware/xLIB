@@ -1,5 +1,4 @@
 /// This module contains utility functions.
-
 mod database;
 mod forger;
 mod reader;
