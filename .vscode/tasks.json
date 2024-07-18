@@ -2,12 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build debug",
+      "label": "rust: maturin build",
       "type": "shell",
-      "command": "cargo",
-      "args": ["build", "--bin=dalmatium", "--package=dalmatium"],
+      "command": "maturin",
+      "args": ["build"],
+      "options": {
+        "cwd": "${workspaceFolder}/dalmatium"
+      },
       "group": "build",
-      "problemMatcher": ["$rustc"],
+      "problemMatcher": [],
       "presentation": {
         "reveal": "always",
         "panel": "shared"

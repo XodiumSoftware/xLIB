@@ -6,10 +6,9 @@ authors = ["IllyrionSoftware <https://illyrion.eu/>"]
 description = "Our Library enforcing the DRY principle and making code REUSABLE."
 license = "AGPL-3.0"
 repository = "https://github.com/IllyrionSoftware/Dalmatium"
-readme = "../README.md"
 keywords = ["dry", "reusable", "library"]
 categories = ["development-tools::bindings", "asynchronous"]
-homepage = "https://illyrion.eu/dalmatium"
+homepage = "https://illyrion.eu/"
 documentation = "https://docs.illyrion.eu/dalmatium"
 publish = true
 
