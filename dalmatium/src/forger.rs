@@ -20,16 +20,19 @@ use pyo3::pyfunction;
 #[pyfunction]
 pub fn forge_dir(path: &str, mode: u32, parents: bool, exist_ok: bool) -> io::Result<()> {
     let path = Path::new(path);
-    if path.exists() && !exist_ok {
-        return Err(io::Error::new(
-            io::ErrorKind::AlreadyExists,
-            format!("Directory already exists: {:?}", path),
-        ));
-    }
-    if parents {
-        fs::create_dir_all(path)?;
+    if path.exists() {
+        if !exist_ok {
+            return Err(io::Error::new(
+                io::ErrorKind::AlreadyExists,
+                format!("Directory already exists: {:?}", path),
+            ));
+        }
     } else {
-        fs::create_dir(path)?;
+        if parents {
+            fs::create_dir_all(path)?;
+        } else {
+            fs::create_dir(path)?;
+        }
     }
     let metadata = path.metadata()?;
     let mut permissions = metadata.permissions();
