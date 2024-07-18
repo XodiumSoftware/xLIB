@@ -1,13 +1,14 @@
-mod config;
 mod forger;
-mod reader;
 
-use forger::Forger;
-use reader::Reader;
+use pyo3::prelude::*;
 
-pub struct Utils;
+#[pyfunction]
+fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
+    Ok((a + b).to_string())
+}
 
-impl Utils {
-    pub const FORGE: Forger = Forger;
-    pub const READ: Reader = Reader;
+#[pymodule]
+fn dalmatium(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
+    Ok(())
 }

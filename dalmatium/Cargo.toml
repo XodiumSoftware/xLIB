@@ -6,7 +6,7 @@ authors = ["IllyrionSoftware <https://illyrion.eu/>"]
 description = "Our Library enforcing the DRY principle and making code REUSABLE."
 license = "AGPL-3.0"
 repository = "https://github.com/IllyrionSoftware/Dalmatium"
-readme = "README.md"
+readme = "../README.md"
 keywords = ["dry", "reusable", "library"]
 categories = ["development-tools::bindings", "asynchronous"]
 homepage = "https://illyrion.eu/dalmatium"
@@ -17,6 +17,7 @@ publish = true
 pyo3 = { version = "0.22.2", features = ["extension-module"] }
 libloading = "0.8.4"
 rusqlite = "0.31.0"
+tempfile = "3.10.1"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
