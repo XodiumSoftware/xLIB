@@ -1,14 +1,15 @@
-mod forger;
+pub mod forger;
 
-use pyo3::prelude::*;
-
-#[pyfunction]
-fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
-    Ok((a + b).to_string())
-}
+use forger::{forge_dir, forge_file};
+use pyo3::{
+    pymodule,
+    types::{PyModule, PyModuleMethods},
+    wrap_pyfunction, Bound, PyResult,
+};
 
 #[pymodule]
 fn dalmatium(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
+    m.add_function(wrap_pyfunction!(forge_dir, m)?)?;
+    m.add_function(wrap_pyfunction!(forge_file, m)?)?;
     Ok(())
 }

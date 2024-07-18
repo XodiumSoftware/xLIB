@@ -3,73 +3,68 @@ use std::io;
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 
-pub struct Forger;
+use pyo3::pyfunction;
 
-impl Forger {
-    /// Forge a directory if it does not exist.
-    ///
-    /// # Arguments
-    ///
-    /// * `path` - The path to the directory.
-    /// * `mode` - The mode of the directory.
-    /// * `parents` - Whether to create parent directories.
-    /// * `exist_ok` - Whether to raise an error if the directory exists.
-    ///
-    /// # Returns
-    ///
-    /// * `Ok(())` on success, `Err(io::Error)` on failure.
-    pub fn dir<P: AsRef<Path>>(
-        path: P,
-        mode: u32,
-        parents: bool,
-        exist_ok: bool,
-    ) -> io::Result<()> {
-        let path = path.as_ref();
-        if path.exists() && !exist_ok {
+/// Forge a directory if it does not exist.
+///
+/// # Arguments
+///
+/// * `path` - The path to the directory.
+/// * `mode` - The mode of the directory.
+/// * `parents` - Whether to create parent directories.
+/// * `exist_ok` - Whether to raise an error if the directory exists.
+///
+/// # Returns
+///
+/// * `Ok(())` on success, `Err(io::Error)` on failure.
+#[pyfunction]
+pub fn forge_dir(path: &str, mode: u32, parents: bool, exist_ok: bool) -> io::Result<()> {
+    let path = Path::new(path);
+    if path.exists() && !exist_ok {
+        return Err(io::Error::new(
+            io::ErrorKind::AlreadyExists,
+            format!("Directory already exists: {:?}", path),
+        ));
+    }
+    if parents {
+        fs::create_dir_all(path)?;
+    } else {
+        fs::create_dir(path)?;
+    }
+    let metadata = path.metadata()?;
+    let mut permissions = metadata.permissions();
+    permissions.set_mode(mode);
+    fs::set_permissions(path, permissions)?;
+    Ok(())
+}
+
+/// Forge a file if it does not exist.
+///
+/// # Arguments
+///
+/// * `path` - The path to the file.
+/// * `mode` - The mode of the file.
+/// * `exist_ok` - Whether to raise an error if the file exists.
+///
+/// # Returns
+///
+/// * `Ok(())` on success, `Err(io::Error)` on failure.
+#[pyfunction]
+pub fn forge_file(path: &str, mode: u32, exist_ok: bool) -> io::Result<()> {
+    let path = Path::new(path);
+    if path.exists() {
+        if !exist_ok {
             return Err(io::Error::new(
                 io::ErrorKind::AlreadyExists,
-                format!("Directory already exists: {:?}", path),
+                format!("File already exists: {:?}", path),
             ));
         }
-        if parents {
-            fs::create_dir_all(path)?;
-        } else {
-            fs::create_dir(path)?;
-        }
-        let metadata = path.metadata()?;
-        let mut permissions = metadata.permissions();
-        permissions.set_mode(mode);
-        fs::set_permissions(path, permissions)?;
-        Ok(())
+    } else {
+        File::create(path)?;
     }
-
-    /// Forge a file if it does not exist.
-    ///
-    /// # Arguments
-    ///
-    /// * `path` - The path to the file.
-    /// * `mode` - The mode of the file.
-    /// * `exist_ok` - Whether to raise an error if the file exists.
-    ///
-    /// # Returns
-    ///
-    /// * `Ok(())` on success, `Err(io::Error)` on failure.
-    pub fn file<P: AsRef<Path>>(path: P, mode: u32, exist_ok: bool) -> io::Result<()> {
-        let path = path.as_ref();
-        if path.exists() {
-            if !exist_ok {
-                return Err(io::Error::new(
-                    io::ErrorKind::AlreadyExists,
-                    format!("File already exists: {:?}", path),
-                ));
-            }
-        } else {
-            File::create(path)?;
-        }
-        let metadata = path.metadata()?;
-        let mut permissions = metadata.permissions();
-        permissions.set_mode(mode);
-        fs::set_permissions(path, permissions)?;
-        Ok(())
-    }
+    let metadata = path.metadata()?;
+    let mut permissions = metadata.permissions();
+    permissions.set_mode(mode);
+    fs::set_permissions(path, permissions)?;
+    Ok(())
 }
