@@ -11,5 +11,3 @@ impl Utils {
     pub const FORGE: Forger = Forger;
     pub const READ: Reader = Reader;
 }
-
-fn main() {}
