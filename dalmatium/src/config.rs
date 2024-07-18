@@ -4,6 +4,7 @@ use std::path::PathBuf;
 
 pub struct Config;
 
+#[allow(dead_code)]
 impl Config {
     // General
     // =============================================================================
