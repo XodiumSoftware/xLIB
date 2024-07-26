@@ -1,10 +1,10 @@
 #[cfg(test)]
 mod tests {
-    use dalmatium::forger::{forge_dir, forge_file};
     use std::fs::File;
     use std::io::Write;
     use std::os::unix::fs::PermissionsExt;
     use tempfile::tempdir;
+    use xlib::forger::{forge_dir, forge_file};
 
     #[test]
     fn test_forge_dir() {
