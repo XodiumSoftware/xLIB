@@ -11,7 +11,7 @@
   <br />
 </h1>
 
-<h4 align="center">Our Library enforcing the DRY principle and making code REUSABLE.</h4><br />
+<h4 align="center">Python Library written in Rust.</h4><br />
 
 <div align="center">
 
@@ -57,7 +57,7 @@ Feel free to dive into the documentation to kickstart your journey with Dalmatiu
 
 </details><p align="right"><a href="#readme-top">▲</a></p>
 
-[built_with_shield_url]: https://skillicons.dev/icons?i=docker,py
+[built_with_shield_url]: https://skillicons.dev/icons?i=docker,rust
 [built_with_url]: https://skillicons.dev
 [code_of_conduct_url]: https://github.com/IllyrionSoftware/Dalmatium?tab=coc-ov-file
 [contributing_url]: https://github.com/IllyrionSoftware/Dalmatium/blob/main/CONTRIBUTING.md

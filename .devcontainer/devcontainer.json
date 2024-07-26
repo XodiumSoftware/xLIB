@@ -1,41 +1,29 @@
 {
-  "image": "python:3.12-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/rust",
   "remoteUser": "root",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": "true",
-      "upgradePackages": "true"
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
     },
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest",
-      "ppa": "false"
-    }
+    "ghcr.io/devcontainers/features/git:1": {}
   },
   "customizations": {
-    "settings": {
-      "python.defaultInterpreterPath": "/usr/local/bin/python"
-    },
     "vscode": {
       "extensions": [
-        "charliermarsh.ruff",
         "esbenp.prettier-vscode",
-        "formulahendry.code-runner",
         "github.copilot",
         "github.vscode-github-actions",
-        "ms-vscode.live-server",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
         "pkief.material-icon-theme",
-        "qwtel.sqlite-viewer",
         "tamasfe.even-better-toml",
         "usernamehw.errorlens",
-        "visualstudioexptteam.vscodeintellicode",
         "vsls-contrib.gistfs"
       ]
     }
   },
   "onCreateCommand": {
-    "pipCommand": "pip install -r requirements.txt"
+    "installMaturin": "cargo install --locked maturin"
   },
   "shutdownAction": "stopContainer"
 }

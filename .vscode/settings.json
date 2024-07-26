@@ -1,73 +1,36 @@
 {
-  // General Settings
-  "code-runner.runInTerminal": true,
-  "extensions.ignoreRecommendations": true,
-  "scm.experimental.showHistoryGraph": true,
-
-  // Editor Settings
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-
-  // Language Specific Editor Settings
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit",
-      "source.fixAll": "explicit"
-    },
-    "editor.defaultFormatter": "charliermarsh.ruff"
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
-
-  // Python Settings
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.autoSearchPaths": true,
-  "python.analysis.completeFunctionParens": true,
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportWildcardImportFromLibrary": "none"
-  },
-  "python.analysis.importFormat": "absolute",
-  "python.analysis.inlayHints.pytestParameters": true,
-  "python.analysis.typeCheckingMode": "strict",
-  "python.createEnvironment.trigger": "off",
-  "python.languageServer": "Pylance",
-  "python.testing.pytestEnabled": false,
-  "python.testing.unittestEnabled": true,
-  "python.testing.unittestArgs": ["-v", "-s", "./", "-p", "test_*.py"],
-
-  // Ruff Settings
-  "ruff.nativeServer": true,
-
-  // Explorer Settings
+  "code-runner.runInTerminal": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-
-  // Git and GitHub Settings
+  "extensions.ignoreRecommendations": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "github.copilot.enable": {
     "*": true
   },
-
-  // JSON Schema Settings
   "json.schemas": [
     {
       "fileMatch": ["*.json", "*.jsonc"],
       "url": "https://json.schemastore.org/package"
     }
   ],
-
-  // Theme and Icons Settings
   "material-icon-theme.files.color": "#ef5350",
+  "material-icon-theme.folders.associations": {
+    "dalmatium": "src"
+  },
   "material-icon-theme.folders.color": "#ef5350",
-  "material-icon-theme.folders.associations": { "dalmatium": "src" },
+  "scm.experimental.showHistoryGraph": true,
+  "rust-analyzer.linkedProjects": ["Cargo.toml"],
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "workbench.colorTheme": "Monokai Dimmed",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "none",
-  "svg.preview.background": "dark-transparent",
-
-  // Terminal Settings
-  "terminal.integrated.enableMultiLinePasteWarning": "never"
+  "workbench.startupEditor": "none"
 }

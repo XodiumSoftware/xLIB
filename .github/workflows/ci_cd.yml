@@ -7,16 +7,30 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  packages: write
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-linux:
+    runs-on: ${{ matrix.platform.runner }}
+    strategy:
+      matrix:
+        platform:
+          - runner: ubuntu-latest
+            target: x86_64
+          - runner: ubuntu-latest
+            target: x86
+          - runner: ubuntu-latest
+            target: aarch64
+          - runner: ubuntu-latest
+            target: armv7
+          - runner: ubuntu-latest
+            target: s390x
+          - runner: ubuntu-latest
+            target: ppc64le
     if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '.deploy')
     environment:
       name: ${{ github.ref_name }}
@@ -34,35 +48,35 @@ jobs:
         with:
           python-version: "3.12"
 
-      - id: cache_dependencies
-        name: Cache Dependencies
-        uses: actions/cache@main
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-
-      - id: install_dependencies
-        name: Install Dependencies
-        run: pip install -e .
-
+      # TODO: fix this to take from pyproject.toml
       - id: get_version
         name: Get Version
         run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
 
-      - id: build_package
-        name: Build Package
-        run: python -m build
+      - id: build_wheels
+        name: Build Wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.platform.target }}
+          args: --release --out dist --find-interpreter
+          sccache: "true"
+          manylinux: auto
 
       - id: upload_package
         name: Upload Package
         uses: actions/upload-artifact@main
         with:
-          name: package
-          path: dist/*
+          name: wheels-linux-${{ matrix.platform.target }}
+          path: dist
 
+  # add build-musllinux
+  # add build-windows
+  # add build-macos
+  # add sdist
+
+  # fix tests to run rust tests
   test:
-    needs: [build]
+    needs: [build-linux]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
@@ -78,7 +92,7 @@ jobs:
         run: python -m unittest discover
 
   release:
-    needs: [build, test]
+    needs: [build-linux, test]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
@@ -99,10 +113,10 @@ jobs:
           draft: ${{ contains(github.event.head_commit.message, '.draft') }}
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
-          tag_name: ${{ needs.build.outputs.VERSION }}
+          tag_name: ${{ needs.build-linux.outputs.VERSION }}
 
   publish:
-    needs: [build, test, release]
+    needs: [build-linux, test, release]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
@@ -113,9 +127,6 @@ jobs:
       - id: download_package
         name: Download Package
         uses: actions/download-artifact@main
-        with:
-          name: package
-          path: dist
 
       - id: list_dist_contents
         name: List dist contents
