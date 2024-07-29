@@ -31,13 +31,9 @@
 
 ## About The Project
 
-xLIB is not just a Python library, it's your companion in creating efficient and clean Python code. Built to simplify the coding process, xLIB offers a rich array of tools, empowering developers to focus on creating remarkable projects that tackle real-world challenges.
-
-Whether you're a seasoned Python developer or just embarking on your coding adventure, xLIB strives to be your ultimate Python ally. Say goodbye to repetitive tasks and embrace best coding practices, letting xLIB pave the way for a seamless development experience.
+xLIB is a Xodium Library written in Rust made for internal use, to streamline, avoid repetitive tasks, and make work more efficient.
 
 **Why xLIB?**
-
-> :straight_ruler: **Customizable and Precise Code:** Tailor your code to your exact specifications, ensuring precision in every project.
 
 > :book: **Well-documented Library:** xLIB comes with comprehensive documentation, making it easier for developers to understand and utilize its features.
 
