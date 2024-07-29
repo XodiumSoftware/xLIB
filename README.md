@@ -3,7 +3,7 @@
 <h1 align="center">
   <br />
     <a href="https://xodium.org/">
-      <img src="https://gist.githubusercontent.com/illyrius666/a38f03b4fbe9b43faa2c5623137c1250/raw/9d750e3edc19cdb1d8ce95dab637f549f4a8e6cd/xLIB.svg" alt="xLIB Logo" width="200">
+      <img src="https://gist.githubusercontent.com/illyrius666/a38f03b4fbe9b43faa2c5623137c1250/raw/121c2119ac45c05cf7792b815bb30952520205b4/xLIB.svg" alt="xLIB Logo" width="200">
     </a>
   <br /><br />
   xLIB
