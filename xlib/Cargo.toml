@@ -3,7 +3,7 @@ name = "xlib"
 version = "1.0.0"
 edition = "2021"
 authors = ["XodiumSoftware <https://xodium.org/>"]
-description = "Python Library written in Rust."
+description = "Xodium Library written in Rust."
 license = "AGPL-3.0"
 repository = "https://github.com/XodiumSoftware/xLIB"
 keywords = ["dry", "reusable", "library"]
@@ -13,7 +13,6 @@ documentation = "https://wiki.xodium.org/xLIB"
 publish = true
 
 [dependencies]
-pyo3 = { version = "0.22.2", features = ["extension-module"] }
 libloading = "0.8.5"
 rusqlite = "0.32.1"
 tempfile = "3.10.1"

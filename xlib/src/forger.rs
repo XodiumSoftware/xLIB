@@ -3,8 +3,6 @@ use std::io;
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 
-use pyo3::pyfunction;
-
 /// Forge a directory if it does not exist.
 ///
 /// # Arguments
@@ -17,7 +15,6 @@ use pyo3::pyfunction;
 /// # Returns
 ///
 /// * `Ok(())` on success, `Err(io::Error)` on failure.
-#[pyfunction]
 pub fn forge_dir(path: &str, mode: u32, parents: bool, exist_ok: bool) -> io::Result<()> {
     let path = Path::new(path);
     if path.exists() {
@@ -52,7 +49,6 @@ pub fn forge_dir(path: &str, mode: u32, parents: bool, exist_ok: bool) -> io::Re
 /// # Returns
 ///
 /// * `Ok(())` on success, `Err(io::Error)` on failure.
-#[pyfunction]
 pub fn forge_file(path: &str, mode: u32, exist_ok: bool) -> io::Result<()> {
     let path = Path::new(path);
     if path.exists() {
