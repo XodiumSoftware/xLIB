@@ -1,6 +1,6 @@
 [package]
 name = "xlib"
-version = "2.0.0"
+version = "1.0.0"
 edition = "2021"
 authors = ["XodiumSoftware <https://xodium.org/>"]
 description = "Python Library written in Rust."

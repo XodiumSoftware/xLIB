@@ -68,8 +68,6 @@ Feel free to dive into the documentation to kickstart your journey with xLIB.
 [issues_shield_url]: https://img.shields.io/github/issues/IllyrionSoftware/xLIB?style=for-the-badge&color=yellow
 [issues_url]: https://github.com/IllyrionSoftware/xLIB/issues
 [license_url]: https://github.com/IllyrionSoftware/xLIB?tab=AGPL-3.0-1-ov-file
-[roadmap_shield_url]: https://img.shields.io/badge/Roadmap-Click%20Me!-purple.svg?style=for-the-badge
+[roadmap_shield_url]: https://img.shields.io/badge/Roadmap-Click%20Me!-purple.svg?style=for-the-badge?style=flat-square
 [roadmap_url]: https://github.com/orgs/IllyrionSoftware/projects/4
 [security_url]: https://github.com/IllyrionSoftware/xLIB?tab=security-ov-file
-[workflow_shield_url]: https://github.com/IllyrionSoftware/xLIB/actions/workflows/ci_cd.yml/badge.svg
-[workflow_url]: https://github.com/IllyrionSoftware/xLIB/actions/workflows/ci_cd.yml
