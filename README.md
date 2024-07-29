@@ -18,7 +18,7 @@
 [![Contributors][contributors_shield_url]][contributors_url]
 [![Issues][issues_shield_url]][issues_url]
 [![Roadmap][roadmap_shield_url]][roadmap_url]<br />
-[![CI/CD][workflow_shield_url]][workflow_url]</div>
+[![Deps.rs][deps_shield_url]][deps_url]</div>
 
 ## Table of Contents
 
@@ -63,6 +63,8 @@ Feel free to dive into the documentation to kickstart your journey with xLIB.
 [contributing_url]: https://github.com/IllyrionSoftware/xLIB/blob/main/CONTRIBUTING.md
 [contributors_shield_url]: https://img.shields.io/github/contributors/IllyrionSoftware/xLIB?style=for-the-badge&color=blue
 [contributors_url]: https://github.com/IllyrionSoftware/xLIB/graphs/contributors
+[deps_shield_url]: https://deps.rs/repo/github/XodiumSoftware/xLIB/status.svg
+[deps_url]: https://deps.rs/repo/github/XodiumSoftware/xLIB
 [issues_shield_url]: https://img.shields.io/github/issues/IllyrionSoftware/xLIB?style=for-the-badge&color=yellow
 [issues_url]: https://github.com/IllyrionSoftware/xLIB/issues
 [license_url]: https://github.com/IllyrionSoftware/xLIB?tab=AGPL-3.0-1-ov-file
