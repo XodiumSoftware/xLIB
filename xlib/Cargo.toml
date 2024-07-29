@@ -14,8 +14,8 @@ publish = true
 
 [dependencies]
 pyo3 = { version = "0.22.2", features = ["extension-module"] }
-libloading = "0.8.4"
-rusqlite = "0.32.0"
+libloading = "0.8.5"
+rusqlite = "0.32.1"
 tempfile = "3.10.1"
 
 [lib]

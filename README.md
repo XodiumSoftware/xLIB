@@ -63,11 +63,11 @@ Feel free to dive into the documentation to kickstart your journey with xLIB.
 [contributing_url]: https://github.com/IllyrionSoftware/xLIB/blob/main/CONTRIBUTING.md
 [contributors_shield_url]: https://img.shields.io/github/contributors/IllyrionSoftware/xLIB?style=for-the-badge&color=blue
 [contributors_url]: https://github.com/IllyrionSoftware/xLIB/graphs/contributors
-[deps_shield_url]: https://deps.rs/repo/github/XodiumSoftware/xLIB/status.svg
+[deps_shield_url]: https://deps.rs/repo/github/XodiumSoftware/xLIB/status.svg?style=for-the-badge
 [deps_url]: https://deps.rs/repo/github/XodiumSoftware/xLIB
 [issues_shield_url]: https://img.shields.io/github/issues/IllyrionSoftware/xLIB?style=for-the-badge&color=yellow
 [issues_url]: https://github.com/IllyrionSoftware/xLIB/issues
 [license_url]: https://github.com/IllyrionSoftware/xLIB?tab=AGPL-3.0-1-ov-file
-[roadmap_shield_url]: https://img.shields.io/badge/Roadmap-Click%20Me!-purple.svg?style=for-the-badge?style=flat-square
+[roadmap_shield_url]: https://img.shields.io/badge/Roadmap-Click%20Me!-purple.svg?style=for-the-badge
 [roadmap_url]: https://github.com/orgs/IllyrionSoftware/projects/4
 [security_url]: https://github.com/IllyrionSoftware/xLIB?tab=security-ov-file
