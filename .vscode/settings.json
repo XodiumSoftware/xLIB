@@ -5,7 +5,6 @@
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
-  "code-runner.runInTerminal": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "explorer.confirmDelete": false,
@@ -27,7 +26,6 @@
     "xlib": "src"
   },
   "material-icon-theme.folders.color": "#ef5350",
-  "scm.experimental.showHistoryGraph": true,
   "rust-analyzer.linkedProjects": ["Cargo.toml"],
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "workbench.colorTheme": "Monokai Dimmed",
