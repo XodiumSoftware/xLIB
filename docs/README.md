@@ -14,7 +14,7 @@ layout:
 
 # 👋 Welcome!
 
-## Welcome to Dalmatium
+## Welcome to xLIB
 
 Here you'll find all the documentation you need to get up and running with the library.
 

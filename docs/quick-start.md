@@ -49,7 +49,7 @@ The best way how to use one of our official libraries:
 {% tab title="Python" %}
 ```bash
 # Install via pip
-pip install --upgrade dalmatium
+pip install --upgrade xlib
 ```
 {% endtab %}
 {% endtabs %}
