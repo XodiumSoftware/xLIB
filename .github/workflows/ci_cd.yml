@@ -7,34 +7,20 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  packages: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build-linux:
-    runs-on: ${{ matrix.platform.runner }}
-    strategy:
-      matrix:
-        platform:
-          - runner: ubuntu-latest
-            target: x86_64
-          - runner: ubuntu-latest
-            target: x86
-          - runner: ubuntu-latest
-            target: aarch64
-          - runner: ubuntu-latest
-            target: armv7
-          - runner: ubuntu-latest
-            target: s390x
-          - runner: ubuntu-latest
-            target: ppc64le
-    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '.deploy')
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
     environment:
       name: ${{ github.ref_name }}
-      url: ${{ steps.upload_package.outputs.artifact-url }}
+      url: ${{ steps.upload_artifact.outputs.artifact-url }}
     outputs:
       VERSION: ${{ steps.get_version.outputs.VERSION }}
     steps:
@@ -42,67 +28,65 @@ jobs:
         name: Checkout
         uses: actions/checkout@main
 
-      - id: setup_python
-        name: Setup Python
-        uses: actions/setup-python@main
+      - id: setup_rust
+        name: Setup Rust
+        uses: actions-rs/toolchain@v1
         with:
-          python-version: "3.12"
+          toolchain: stable
 
-      # TODO: fix this to take from pyproject.toml
+      - id: build_artifact
+        name: Build Artifact
+        run: cargo build --target=x86_64-pc-windows-gnu --release
+
+      - id: install_toml_cli
+        name: Install toml-cli
+        run: cargo install toml-cli
+
       - id: get_version
         name: Get Version
-        run: echo "VERSION=$(python setup.py --version)" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(toml get xcad/Cargo.toml package.version)" >> $GITHUB_OUTPUT
 
-      - id: build_wheels
-        name: Build Wheels
-        uses: PyO3/maturin-action@v1
+      - id: upload_artifact
+        name: Upload Artifact
+        uses: actions/upload-artifact@v4
         with:
-          target: ${{ matrix.platform.target }}
-          args: --release --out dist --find-interpreter
-          sccache: "true"
-          manylinux: auto
+          name: artifact
+          path: target/x86_64-pc-windows-gnu/release/xcad
 
-      - id: upload_package
-        name: Upload Package
-        uses: actions/upload-artifact@main
-        with:
-          name: wheels-linux-${{ matrix.platform.target }}
-          path: dist
-
-  # add build-musllinux
-  # add build-windows
-  # add build-macos
-  # add sdist
-
-  # fix tests to run rust tests
   test:
-    needs: [build-linux]
+    needs: [build]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
     steps:
-      - id: download_package
-        name: Download Package
-        uses: actions/download-artifact@main
+      - id: download_artifact
+        name: Download Artifact
+        uses: actions/download-artifact@v4.1.8
         with:
-          name: package
+          name: artifact
+
+      - id: setup_rust
+        name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
 
       - id: run_tests
         name: Run Tests
-        run: python -m unittest discover
+        run: cargo test --all
 
   release:
-    needs: [build-linux, test]
+    needs: [build, test]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name }}
       url: ${{ steps.create_release.outputs.url }}
     steps:
-      - id: download_package
-        name: Download Package
-        uses: actions/download-artifact@main
+      - id: download_artifact
+        name: Download Artifact
+        uses: actions/download-artifact@v4.1.8
         with:
-          name: package
+          name: artifact
 
       - id: create_release
         name: Create Release
@@ -113,25 +97,4 @@ jobs:
           draft: ${{ contains(github.event.head_commit.message, '.draft') }}
           generate_release_notes: true
           prerelease: ${{ contains(github.event.head_commit.message, '.pre') }}
-          tag_name: ${{ needs.build-linux.outputs.VERSION }}
-
-  publish:
-    needs: [build-linux, test, release]
-    runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.ref_name }}
-      url: ${{ steps.upload_to_pypi.outputs.url }}
-    permissions:
-      id-token: write
-    steps:
-      - id: download_package
-        name: Download Package
-        uses: actions/download-artifact@main
-
-      - id: list_dist_contents
-        name: List dist contents
-        run: ls dist/
-
-      - id: upload_to_pypi
-        name: Upload to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1.8
+          tag_name: ${{ needs.build.outputs.VERSION }}
